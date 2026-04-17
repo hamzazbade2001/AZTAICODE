@@ -1,0 +1,42 @@
+<evaluation>
+  <qa_pair>
+    <question>Using the AZT platform, how many compliance registries does a contractor need to maintain in Brazil?</question>
+    <answer>7</answer>
+  </qa_pair>
+  <qa_pair>
+    <question>When analyzing a pharma tender in Mexico that has only the active_ingredient, dosage_form, and quantity fields specified, how many specification gaps does the gap analysis engine detect?</question>
+    <answer>11</answer>
+  </qa_pair>
+  <qa_pair>
+    <question>What is the total risk premium percentage that AZT applies to Ghana procurement contracts using the default 12-month duration? Add the payment_delay, fx_exposure, change_order, and inflation percentages.</question>
+    <answer>21.2</answer>
+  </qa_pair>
+  <qa_pair>
+    <question>In the AZT sector weight configuration, which sector assigns the highest weight to geographic proximity in its supplier matching algorithm, and what is that weight as a percentage?</question>
+    <answer>construction at 20%</answer>
+  </qa_pair>
+  <qa_pair>
+    <question>If a construction tender in Mexico has zero present fields, how many gaps are classified as CRITICAL by the gap analysis engine?</question>
+    <answer>4</answer>
+  </qa_pair>
+  <qa_pair>
+    <question>What is the HHI (Herfindahl-Hirschman Index) value that the AZT market concentration tool calculates for Ghana oil_gas, and what market type classification does it receive?</question>
+    <answer>3250, concentrated</answer>
+  </qa_pair>
+  <qa_pair>
+    <question>According to AZT's country profiles, what is the average payment delay in days for Ghana, and what data protection law governs the country?</question>
+    <answer>150 days, Act 843</answer>
+  </qa_pair>
+  <qa_pair>
+    <question>When the AZT pricing engine generates bids for a tender with an estimated value of 10,000,000 BRL in Brazil for pharma with a 12-month contract, what is the recommended (balanced variant) bid price?</question>
+    <answer>9690000</answer>
+  </qa_pair>
+  <qa_pair>
+    <question>What bid rigging co-occurrence threshold does the AZT fraud detection system use for markets classified as oligopoly with HHI above 4000?</question>
+    <answer>0.90</answer>
+  </qa_pair>
+  <qa_pair>
+    <question>How many required specification fields are in the AZT gap-filling taxonomy for the telecom sector?</question>
+    <answer>12</answer>
+  </qa_pair>
+</evaluation>
