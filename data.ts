@@ -32,7 +32,7 @@ export const COUNTRIES: Record<string, CountryProfile> = {
     name: "Brazil", currency: "BRL", language: "Portuguese",
     procurementLaw: "Lei 14,133/2021", dataProtection: "LGPD",
     avgPaymentDelayDays: 120, fxVolatility: 0.18,
-    registries: ["SICAF", "CEIS", "CNEP", "CEPIM", "TCU Inid\u00f4neos", "CND Federal", "FGTS"],
+    registries: ["SICAF", "CEIS", "CNEP", "CEPIM", "TCU Inidôneos", "CND Federal", "FGTS"],
     portals: ["PNCP", "Compras.gov.br", "Contratos.gov.br"],
     regulators: { pharma: "ANVISA/CMED", telecom: "ANATEL", construction: "DNIT", oil_gas: "ANP" },
   },
@@ -105,7 +105,7 @@ export const GAP_TAXONOMIES: Record<string, GapField[]> = {
 
 export const SUGGESTIONS: Record<string, [string, number]> = {
   delivery_schedule: ["Monthly batches", 0.72],
-  cold_chain: ["2-8\u00b0C storage and transport required", 0.85],
+  cold_chain: ["2-8°C storage and transport required", 0.85],
   shelf_life: ["24 months minimum remaining at delivery", 0.78],
   quality_testing: ["USP/BP standards, certificate of analysis required", 0.74],
   sla_uptime: ["99.95% uptime guarantee", 0.88],
@@ -136,10 +136,15 @@ export function seededRandom(seed: string): () => number {
   for (let i = 0; i < seed.length; i++) {
     h = Math.imul(31, h) + seed.charCodeAt(i) | 0;
   }
+  // MurmurHash3 finalizer used as PRNG state — zero is a fixed point that
+  // makes every subsequent call return 0. Seed to a non-zero value.
+  if ((h >>> 0) === 0) h = 0x6D2B79F5 | 0;
   return () => {
     h = Math.imul(h ^ (h >>> 16), 2246822507);
     h = Math.imul(h ^ (h >>> 13), 3266489909);
     h ^= h >>> 16;
+    // Guard: if the sequence ever hits 0, escape the fixed point.
+    if ((h >>> 0) === 0) h = 1;
     return (h >>> 0) / 4294967296;
   };
 }
