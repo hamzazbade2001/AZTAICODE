@@ -56,6 +56,7 @@ function hhiTier(hhi: number): { market_type: string; rigging_threshold: number 
 
 const server = new McpServer({ name: "azt-mcp-server", version: "1.0.0" });
 
+// Shared enum schemas
 const CountryEnum = z.enum(["MX", "BR", "GH"]);
 const SectorEnum  = z.enum(["pharma", "telecom", "construction", "oil_gas"]);
 
@@ -192,6 +193,7 @@ server.tool(
       country,
       sector,
       weights_used:             weights,
+      weights_used:            weights,
       top_proximity_weight_pct: (weights["proximity"] ?? 0) * 100,
       bids,
     });
@@ -255,6 +257,7 @@ server.tool(
     const totalRisk  = risks.reduce((a, b) => a + b, 0);
     const monthScale = Math.min(contract_months / 12, 1);
 
+    // Balanced: geometric mean of risk values, rounded to 1 decimal place
     const geomMean        = Math.pow(risks.reduce((a, b) => a * b, 1), 1 / risks.length);
     const balancedPct     = Math.round(geomMean * 10) / 10;
     const aggressivePct   = Math.round(totalRisk * monthScale * 10) / 10;
@@ -413,6 +416,9 @@ server.tool(
       highest_weight_dimension: top[0],
       highest_weight_value:     top[1],
       highest_weight_percent:   top[1] * 100,
+      highest_weight_dimension:   top[0],
+      highest_weight_value:       top[1],
+      highest_weight_percent:     top[1] * 100,
     });
   },
 );
