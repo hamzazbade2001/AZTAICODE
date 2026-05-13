@@ -121,10 +121,10 @@ server.tool(
   },
   async ({ sector, country, missing_fields }) => {
     const taxonomy   = GAP_TAXONOMIES[sector] ?? [];
-    const presentSet = new Set(missing_fields.map((f: string) => f.toLowerCase().trim()));
+    const missingSet = new Set(missing_fields.map((f: string) => f.toLowerCase().trim()));
 
     const filled = taxonomy
-      .filter(([f]) => presentSet.has(f))
+      .filter(([f]) => missingSet.has(f))
       .map(([field, severity]) => {
         const sug = SUGGESTIONS[field];
         return {
@@ -193,7 +193,6 @@ server.tool(
       country,
       sector,
       weights_used:             weights,
-      weights_used:            weights,
       top_proximity_weight_pct: (weights["proximity"] ?? 0) * 100,
       bids,
     });
@@ -416,9 +415,6 @@ server.tool(
       highest_weight_dimension: top[0],
       highest_weight_value:     top[1],
       highest_weight_percent:   top[1] * 100,
-      highest_weight_dimension:   top[0],
-      highest_weight_value:       top[1],
-      highest_weight_percent:     top[1] * 100,
     });
   },
 );
