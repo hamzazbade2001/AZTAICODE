@@ -1,0 +1,11 @@
+# Compiled output
+dist/
+*.js
+*.js.map
+*.d.ts
+
+# Dependencies
+node_modules/
+
+# OS artefacts
+.DS_Store
